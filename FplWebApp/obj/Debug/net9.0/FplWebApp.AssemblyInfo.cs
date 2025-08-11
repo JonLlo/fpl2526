@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FplWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c237632a92d70d7e72fde965b1ceae62c13cce4a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5a5f7f326394276c371bbb4aa38957dacb5524a")]
 [assembly: System.Reflection.AssemblyProductAttribute("FplWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FplWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

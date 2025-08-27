@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jonnylloyd/coding/c#/fpl2526/FplWebApp/FplWebApp.csproj": {}
+    "/Users/jonnylloyd/coding/fpl2526/FplWebApp/FplWebApp.csproj": {}
   },
   "projects": {
-    "/Users/jonnylloyd/coding/c#/fpl2526/FplWebApp/FplWebApp.csproj": {
+    "/Users/jonnylloyd/coding/fpl2526/FplWebApp/FplWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jonnylloyd/coding/c#/fpl2526/FplWebApp/FplWebApp.csproj",
+        "projectUniqueName": "/Users/jonnylloyd/coding/fpl2526/FplWebApp/FplWebApp.csproj",
         "projectName": "FplWebApp",
-        "projectPath": "/Users/jonnylloyd/coding/c#/fpl2526/FplWebApp/FplWebApp.csproj",
+        "projectPath": "/Users/jonnylloyd/coding/fpl2526/FplWebApp/FplWebApp.csproj",
         "packagesPath": "/Users/jonnylloyd/.nuget/packages/",
-        "outputPath": "/Users/jonnylloyd/coding/c#/fpl2526/FplWebApp/obj/",
+        "outputPath": "/Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jonnylloyd/.nuget/NuGet/NuGet.Config"

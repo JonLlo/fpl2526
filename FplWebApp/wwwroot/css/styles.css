@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, impact;
+    padding: 20px;
+}
+
+.number-line {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-top: 2px solid black;
+    margin-bottom: 20px;
+}
+
+.marker {
+    position: absolute;
+    top: -100px;
+    text-align: center;
+}
+
+.marker span {
+    display: block;
+    font-size: 10px;
+    transform: translateX(-50%); /* center the text above the line */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}

@@ -56,3 +56,4 @@
 /Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/ref/FplWebApp.dll
 /Users/jonnylloyd/coding/fpl2526/FplWebApp/bin/Debug/net9.0/FplWebApp.staticwebassets.runtime.json
 /Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/compressed/fry5is9hgd-lipxd7mljq.gz
+/Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/compressed/zisil65mka-tn2ac8fki2.gz

@@ -4,11 +4,13 @@ using System.Text.Json;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+app.UseStaticFiles(); // Needed to serve HTML and CSS from wwwroot
+
 app.MapGet("/", async () =>
 {
     using HttpClient client = new();
 
-    // 1️⃣ Get league entries
+    // Fetch league entries (same as before)
     string leagueUrl = "https://fantasy.premierleague.com/api/leagues-classic/275033/standings/";
     var leagueResponse = await client.GetStringAsync(leagueUrl);
     var leagueJson = JsonDocument.Parse(leagueResponse);
@@ -17,9 +19,9 @@ app.MapGet("/", async () =>
         .GetProperty("standings")
         .GetProperty("results")
         .EnumerateArray()
-        .ToList(); // materialize for multiple loops
+        .ToList();
 
-    // 2️⃣ Fetch player details for rank
+    // Fetch player details
     var playerDetails = new List<(string entryName, int? overallRank)>();
     foreach (var entry in entries)
     {
@@ -30,50 +32,44 @@ app.MapGet("/", async () =>
         var playerResponse = await client.GetStringAsync(playerUrl);
         var playerJson = JsonDocument.Parse(playerResponse);
 
-    int? overallRank = null;
-if (playerJson.RootElement.TryGetProperty("summary_overall_rank", out var rankProp))
-{
-    if (rankProp.ValueKind == JsonValueKind.Number)
-        overallRank = rankProp.GetInt32();
-    // else leave as null
-}
+        int? overallRank = null;
+        if (playerJson.RootElement.TryGetProperty("summary_overall_rank", out var rankProp))
+        {
+            if (rankProp.ValueKind == JsonValueKind.Number)
+                overallRank = rankProp.GetInt32();
+        }
 
         playerDetails.Add((entryName, overallRank));
     }
 
-    // 3️⃣ Build HTML
-    var html = @"
-    <html>
-      <body>
-        <h1>League Entries</h1>
-        <div style='position: relative; width: 100%; height: 50px; border-top: 2px solid black;'>
-    ";
+    // Read the HTML file
+    string htmlPath = Path.Combine(builder.Environment.WebRootPath, "html", "index.html");
+    string htmlTemplate = await File.ReadAllTextAsync(htmlPath);
 
-    
-
-
-  // Determine max rank for scaling (ignoring nulls)
+    // Inject markers
     var rankedPlayers = playerDetails.Where(p => p.overallRank.HasValue).ToList();
-    int maxRank = rankedPlayers.Any() ? rankedPlayers.Max(p => p.overallRank.Value) : 1; // default 1 if none
+    int maxRank = rankedPlayers.Any() ? rankedPlayers.Max(p => p.overallRank.Value) : 1;
 
-  foreach (var player in rankedPlayers)
-{
-int left = (int)((1 - (player.overallRank.Value / (double)maxRank)) * 1200);
-    html += $"<div style='position: absolute; left: {left}px; top: -10px;'>|<br/>{player.entryName}</div>";
-}
+    string markersHtml = "";
+    foreach (var player in rankedPlayers)
+    {
+        double leftPercent = (1 - (player.overallRank.Value / (double)maxRank)) * 100;
+        markersHtml += $"<div class='marker' style='left: {leftPercent}%;'><span>{player.entryName}</span>|</div>";
+    }
 
-    html += "</div>";
-
-    // Player list with ranks
-    html += "<ul>";
+    // Inject player list
+    string listHtml = "";
     foreach (var player in playerDetails)
     {
-        string rankText = player.overallRank.HasValue ? player.overallRank.Value.ToString() : "N/sA";
-        html += $"<li>{player.entryName}: {rankText}</li>";
+        string rankText = player.overallRank.HasValue ? player.overallRank.Value.ToString() : "N/A";
+        listHtml += $"<li>{player.entryName}: {rankText}</li>";
     }
-    html += "</ul></body></html>";
 
-    return Results.Content(html, "text/html");
+    // Replace placeholders in HTML
+    htmlTemplate = htmlTemplate.Replace("<!-- Markers will be injected here -->", markersHtml);
+    htmlTemplate = htmlTemplate.Replace("<!-- Player list will be injected here -->", listHtml);
+
+    return Results.Content(htmlTemplate, "text/html");
 });
 
 app.Run();

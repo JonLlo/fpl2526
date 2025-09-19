@@ -7,16 +7,17 @@
 </head>
 <body>
     <h1>League Entries</h1>
+    <h5>NEEKS: 275033 <br> TROOPS: 275041 <br> FPLMATE: 33442</h5>
     <ul id="playerList">
         <!-- Player list will be injected here -->
              <!-- Form that submits to /search -->
     <form method="get" action="/search">
-        <input type="number" name="number" placeholder="Enter a number" required>
+        <input type="number" name="number" placeholder="Enter Your league ID" required>
         <button type="submit">Search</button>
     </form>
        <div id="results">
         <!-- Results will be injected by C# -->
-        @Results
+        @ok
     </div>
 
     </ul>

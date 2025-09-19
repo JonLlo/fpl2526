@@ -36,7 +36,7 @@ app.MapGet("/search", async (int number) =>
         int count = 0;
         foreach (var entry in standings)
         {
-            if (count++ >= 22) break;
+            if (count++ >= 50) break;
             string name = entry.GetProperty("entry_name").GetString();
             int rank = entry.GetProperty("rank").GetInt32();
             resultsHtml += $"<li>{rank}: {name}</li>";
@@ -48,7 +48,7 @@ app.MapGet("/search", async (int number) =>
         resultsHtml = $"<p>Could not find league with ID {number}</p>";
     }
 
-    htmlTemplate = htmlTemplate.Replace("@Results", resultsHtml);
+    htmlTemplate = htmlTemplate.Replace("@ok", resultsHtml);
     return Results.Content(htmlTemplate, "text/html");
 });
 

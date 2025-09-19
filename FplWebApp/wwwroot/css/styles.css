@@ -53,7 +53,7 @@ button:hover {
     min-width: 220px;                 /* roughly same width as input */
     
     /* Scrollable for long lists */
-    max-height: 250px;                /* approx height for 10 results */
+    max-height: 265px;                /* approx height for 10 results */
     overflow-y: auto;
 }
 

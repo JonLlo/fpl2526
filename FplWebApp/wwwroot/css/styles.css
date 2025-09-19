@@ -1,13 +1,9 @@
+/* Body & general styling */
 body {
     font-family: Arial, sans-serif;
-    /* Gradient background */
-    background: linear-gradient(
-        to right,
-        #E0FF05 0%,
-        #35FE64 49%,
-        #07F3DC 100%
-    );
+    background: linear-gradient(to right, #E0FF05, #35FE64, #07F3DC);
     padding: 2rem;
+    text-align: center;
 }
 
 h1 {
@@ -15,13 +11,12 @@ h1 {
     text-align: center;
 }
 
-/* Style the form container */
+/* Form styling (search box) */
 form {
-    text-align: center;        /* Center the input and button */
+    text-align: center;
     margin-top: 2rem;
 }
 
-/* Style the input box */
 input[type="number"] {
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -31,17 +26,49 @@ input[type="number"] {
     margin-right: 0.5rem;
 }
 
-/* Style the submit button */
+/* Search button styling */
 button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    background-color: #000;    /* Black background */
-    color: #fff;               /* White text */
+    background-color: black;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #333;    /* Darker on hover */
+    background-color: #333;
+}
+/* Results container styled like search box with scroll */
+#results {
+    display: inline-block;           /* shrink-wrap to content */
+    text-align: left;
+    background-color: white;          /* white like input field */
+    color: black;                     /* grey text */
+    border: 2px solid black;          /* same as search input border */
+    padding: 0.5rem 1rem;             /* same padding as input box */
+    border-radius: 5px;               /* same rounding as input box */
+    margin-top: 2rem;
+    min-width: 220px;                 /* roughly same width as input */
+    
+    /* Scrollable for long lists */
+    max-height: 250px;                /* approx height for 10 results */
+    overflow-y: auto;
+}
+
+/* List inside results */
+#results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#results li {
+    padding: 0.25rem 0;               /* slightly smaller spacing */
+    border-bottom: 1px solid rgba(0,0,0,0.1); /* subtle separation */
+}
+
+#results li:last-child {
+    border-bottom: none;
 }

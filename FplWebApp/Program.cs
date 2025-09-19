@@ -13,11 +13,43 @@ app.MapGet("/", async () =>
     return Results.Content(html, "text/html");
 });
 
-// Handle the form submission
-app.MapGet("/search", (int number) =>
+// Handle the search form submission
+app.MapGet("/search", async (int number) =>
 {
-    // This C# code receives the number
-    return $"You entered number: {number}";
+    var htmlTemplate = await File.ReadAllTextAsync("wwwroot/index.html");
+
+    string apiUrl = $"https://fantasy.premierleague.com/api/leagues-classic/{number}/standings/";
+    using HttpClient client = new();
+    string resultsHtml;
+
+    try
+    {
+        var response = await client.GetStringAsync(apiUrl);
+        var jsonDoc = JsonDocument.Parse(response);
+
+        var standings = jsonDoc.RootElement
+            .GetProperty("standings")
+            .GetProperty("results")
+            .EnumerateArray();
+
+        resultsHtml = "<ul>";
+        int count = 0;
+        foreach (var entry in standings)
+        {
+            if (count++ >= 22) break;
+            string name = entry.GetProperty("entry_name").GetString();
+            int rank = entry.GetProperty("rank").GetInt32();
+            resultsHtml += $"<li>{rank}: {name}</li>";
+        }
+        resultsHtml += "</ul>";
+    }
+    catch
+    {
+        resultsHtml = $"<p>Could not find league with ID {number}</p>";
+    }
+
+    htmlTemplate = htmlTemplate.Replace("@Results", resultsHtml);
+    return Results.Content(htmlTemplate, "text/html");
 });
 
 app.Run();

@@ -1,0 +1,4 @@
+https://fantasy.premierleague.com/api/entry/81991/
+https://fantasy.premierleague.com/api/leagues-classic/275041/standings/ ..troops
+https://fantasy.premierleague.com/api/leagues-classic/275033/standings/ ..neeks
+alias dr="dotnet run"

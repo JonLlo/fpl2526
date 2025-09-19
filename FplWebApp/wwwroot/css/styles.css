@@ -1,33 +1,16 @@
 body {
-    font-family: Arial, impact;
-    padding: 20px;
+    font-family: Arial, sans-serif;
+    /* Use background with linear-gradient */
+    background: linear-gradient(
+        to right,
+        #E0FF05 0%,
+        #35FE64 49%,
+        #07F3DC 100%
+    );
+    padding: 2rem;
 }
 
-.number-line {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-top: 2px solid black;
-    margin-bottom: 20px;
-}
-
-.marker {
-    position: absolute;
-    top: -100px;
+h1 {
+    color: black;
     text-align: center;
-}
-
-.marker span {
-    display: block;
-    font-size: 10px;
-    transform: translateX(-50%); /* center the text above the line */
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 5px 0;
 }

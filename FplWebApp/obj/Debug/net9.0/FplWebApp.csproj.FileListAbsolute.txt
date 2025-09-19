@@ -55,5 +55,5 @@
 /Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/FplWebApp.genruntimeconfig.cache
 /Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/ref/FplWebApp.dll
 /Users/jonnylloyd/coding/fpl2526/FplWebApp/bin/Debug/net9.0/FplWebApp.staticwebassets.runtime.json
-/Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/compressed/444mwnrs22-c8c8f54mlf.gz
-/Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/compressed/fry5is9hgd-bjg9w2u2xw.gz
+/Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/compressed/fry5is9hgd-cncbpwjo02.gz
+/Users/jonnylloyd/coding/fpl2526/FplWebApp/obj/Debug/net9.0/compressed/444mwnrs22-fkk4milmzj.gz
